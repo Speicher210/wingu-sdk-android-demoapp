@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import de.wingu.sdk.WinguSDK;
 import de.wingu.sdk.data.api.model.Channel;
 import de.wingu.sdk.data.api.model.ChannelEvents;
 import de.wingu.sdk.utils.prerequisite.PrerequisitesChecker;
@@ -87,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
       channelsSubscription.unsubscribe();
     }
 
-    channelsSubscription = App.getWinguSDK().getNearbyChannelObserver()
+    channelsSubscription = WinguSDK.getInstance().getNearbyChannelObserver()
         .getChannelEvents()
         .subscribe(new Action1<ChannelEvents>() {
           @Override
@@ -128,7 +129,7 @@ public class MainActivity extends AppCompatActivity {
   }
 
   private void displayCurrentChannels() {
-    final Collection<Channel> currentChannels = App.getWinguSDK().getNearbyChannelObserver()
+    final Collection<Channel> currentChannels = WinguSDK.getInstance().getNearbyChannelObserver()
         .getCurrentNearbyChannels();
     channelAdapter.clearAll();
     channelAdapter.addAll(currentChannels);
@@ -136,6 +137,6 @@ public class MainActivity extends AppCompatActivity {
 
   private void rescan() {
     displayCurrentChannels();
-    App.getWinguSDK().getNearbyChannelObserver().rescan();
+    WinguSDK.getInstance().getNearbyChannelObserver().rescan();
   }
 }
