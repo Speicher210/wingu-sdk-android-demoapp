@@ -110,8 +110,6 @@ public class MainActivity extends AppCompatActivity {
 
     switch (channelEvents.getEventType()) {
       case DISCOVERED:
-        channelAdapter.addAll(channelEvents.getChannels());
-        break;
       case UPDATED:
         channelAdapter.addOrUpdateAll(channelEvents.getChannels());
         break;
