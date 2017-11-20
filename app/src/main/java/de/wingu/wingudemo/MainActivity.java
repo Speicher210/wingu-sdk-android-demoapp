@@ -16,23 +16,22 @@ import de.wingu.sdk.utils.prerequisite.PrerequisitesChecker;
 import de.wingu.sdk.utils.prerequisite.ResolveResults;
 import java.util.Collection;
 import rx.Subscription;
-import rx.functions.Action1;
 
 public class MainActivity extends AppCompatActivity {
 
-  public static final String TAG = "MainActivity";
+  private static final String TAG = "MainActivity";
   private static final int WINGU_SDK_PREREQUISITES_REQUEST = 535;
 
   @Nullable
   private Subscription channelsSubscription;
 
-  private ChannelAdapter channelAdapter = new ChannelAdapter();
+  private final ChannelAdapter channelAdapter = new ChannelAdapter();
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
-    RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+    RecyclerView recyclerView = findViewById(R.id.recycler_view);
     recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
     recyclerView.setAdapter(channelAdapter);
 
@@ -90,17 +89,7 @@ public class MainActivity extends AppCompatActivity {
 
     channelsSubscription = WinguSDK.getInstance().getNearbyChannelObserver()
         .getChannelEvents()
-        .subscribe(new Action1<ChannelEvents>() {
-          @Override
-          public void call(ChannelEvents channelEvents) {
-            onChannelEvents(channelEvents);
-          }
-        }, new Action1<Throwable>() {
-          @Override
-          public void call(Throwable throwable) {
-            Log.e(TAG, "Could not get nearby channels", throwable);
-          }
-        });
+        .subscribe(this::onChannelEvents, throwable -> Log.e(TAG, "Could not get nearby channels", throwable));
   }
 
   private void onChannelEvents(ChannelEvents channelEvents) {
