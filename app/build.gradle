@@ -8,10 +8,6 @@ android {
         targetCompatibility 1.8
     }
 
-    dataBinding {
-        enabled true
-    }
-
     defaultConfig {
         applicationId "de.wingu.wingudemo"
         multiDexEnabled true
