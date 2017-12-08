@@ -1,4 +1,29 @@
+buildscript {
+    repositories {
+        maven { url "https://github.com/Speicher210/wingu-android-sdk/raw/master/releases" }
+    }
+}
+
+plugins {
+    id "io.spring.dependency-management" version "1.0.3.RELEASE"
+}
+
 apply plugin: 'com.android.application'
+
+ext {
+    supportLibsVersion = '26.1.0'
+    winguSdkVersion = '1.0.0'
+}
+
+dependencyManagement {
+    imports {
+        mavenBom("com.github.Speicher210.wingu-android-sdk:bom:${winguSdkVersion}") {
+            bomProperties([
+                    'com.android.support.version': supportLibsVersion
+            ])
+        }
+    }
+}
 
 android {
     compileSdkVersion 26
@@ -27,21 +52,13 @@ android {
 }
 
 repositories {
-    google()
     jcenter()
+    google()
     maven { url "https://jitpack.io" }
     maven { url "https://github.com/Speicher210/wingu-android-sdk/raw/master/releases" }
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
-
-    implementation 'com.android.support:appcompat-v7:27.0.1'
-    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
-    implementation 'com.github.Speicher210.wingu-android-sdk:sdk:0.3.5'
-
-    testImplementation 'junit:junit:4.12'
+    implementation "com.android.support:appcompat-v7:${supportLibsVersion}"
+    implementation "com.github.Speicher210.wingu-android-sdk:sdk:${winguSdkVersion}"
 }
