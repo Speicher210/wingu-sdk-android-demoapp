@@ -11,8 +11,8 @@ plugins {
 apply plugin: 'com.android.application'
 
 ext {
-    supportLibsVersion = '26.1.0'
-    winguSdkVersion = '1.0.0'
+    supportLibsVersion = '27.1.1'
+    winguSdkVersion = '2.0.0'
 }
 
 dependencyManagement {
@@ -26,7 +26,7 @@ dependencyManagement {
 }
 
 android {
-    compileSdkVersion 26
+    compileSdkVersion 27
 
     compileOptions {
         sourceCompatibility 1.8
@@ -37,7 +37,7 @@ android {
         applicationId "de.wingu.wingudemo"
         multiDexEnabled true
         minSdkVersion 21
-        targetSdkVersion 25
+        targetSdkVersion 27
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -61,4 +61,5 @@ repositories {
 dependencies {
     implementation "com.android.support:appcompat-v7:${supportLibsVersion}"
     implementation "com.github.Speicher210.wingu-android-sdk:sdk:${winguSdkVersion}"
+    implementation "com.github.Speicher210.wingu-android-sdk:component-video:${winguSdkVersion}"
 }
