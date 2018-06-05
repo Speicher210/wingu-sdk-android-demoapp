@@ -2,6 +2,7 @@ package de.wingu.wingudemo;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -30,7 +31,7 @@ public class ChannelDetailsActivity extends AppCompatActivity {
     FragmentManager fm = getSupportFragmentManager();
     if (fm.findFragmentByTag(CHANNEL_FRAGMENT_TAG) == null) {
       ChannelKey channelKey = getIntent().getParcelableExtra(CHANNEL_EXTRA);
-      ChannelDetailsFragment fragment = ChannelDetailsFragment.newInstance(channelKey);
+      Fragment fragment = ChannelDetailsFragment.newInstance(channelKey);
       fm.beginTransaction()
           .replace(R.id.frame, fragment)
           .commit();

@@ -18,7 +18,7 @@ public class App extends Application {
         super.onCreate();
 
         WinguSDKBuilder.with(this, WINGU_API_KEY)
-                .iBeaconBackgroundScan(true)
+                .ibeaconBackgroundScan(true)
                 .channelNotificationsConfig(this::getChannelNotificationsConfig)
 //                .registerComponent(LocationWinguComponent.specMapView()) // TODO optional; needs google API key added to your AndroidManifest.xml
 //                .registerComponent(VideoWinguComponent.spec(your_google_api_key)) // TODO optional
