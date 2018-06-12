@@ -8,3 +8,7 @@ You will need a wingu account to create content and query our backend. (https://
 
 Simply open the project in Android Studio and run it. Note that beacons will not show up
 in an emulator since it does not support bluetooth.
+
+#Kotlin
+
+Master branch is written in Java, there is also kotlin branch with kotlin version of demo app.
