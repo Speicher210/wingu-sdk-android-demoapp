@@ -1,6 +1,5 @@
 <resources>
   <string name="app_name">WinguDemo</string>
   <string name="button_rescan">Rescan</string>
-  <string name="key">AIzaSyDkH_0gEdfDmJXalVuL0Dn1VFQT-7aDwG4</string>
   <string name="qrcode_scanner">Qrcode scanner</string>
 </resources>
