@@ -12,7 +12,7 @@ apply plugin: 'com.android.application'
 
 ext {
     supportLibsVersion = '27.1.1'
-    winguSdkVersion = '3.0.3'
+    winguSdkVersion = '3.1.0'
 }
 
 dependencyManagement {
@@ -43,12 +43,33 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
+    packagingOptions {
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+        pickFirst 'org/joda/time/format/messages.properties'
+        pickFirst 'org/joda/time/format/messages_cs.properties'
+        pickFirst 'org/joda/time/format/messages_da.properties'
+        pickFirst 'org/joda/time/format/messages_de.properties'
+        pickFirst 'org/joda/time/format/messages_en.properties'
+        pickFirst 'org/joda/time/format/messages_es.properties'
+        pickFirst 'org/joda/time/format/messages_fr.properties'
+        pickFirst 'org/joda/time/format/messages_it.properties'
+        pickFirst 'org/joda/time/format/messages_ja.properties'
+        pickFirst 'org/joda/time/format/messages_no.properties'
+        pickFirst 'org/joda/time/format/messages_nl.properties'
+        pickFirst 'org/joda/time/format/messages_pl.properties'
+        pickFirst 'org/joda/time/format/messages_pt.properties'
+        pickFirst 'org/joda/time/format/messages_ru.properties'
+        pickFirst 'org/joda/time/format/messages_tr.properties'
+    }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
 }
 
 repositories {
@@ -62,4 +83,6 @@ dependencies {
     implementation "com.android.support:appcompat-v7:${supportLibsVersion}"
     implementation "com.github.Speicher210.wingu-android-sdk:sdk:${winguSdkVersion}"
     implementation "com.github.Speicher210.wingu-android-sdk:component-video:${winguSdkVersion}"
+    implementation "com.github.Speicher210.wingu-android-sdk:qrcodescanner:${winguSdkVersion}"
+    implementation 'joda-time:joda-time:2.9.9'
 }
