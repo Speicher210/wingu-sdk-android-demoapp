@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import de.wingu.qrcodescanner.QrCodeScannerActivity
 import de.wingu.sdk.WinguSDK
 import de.wingu.sdk.data.api.model.ChannelEventType
 import de.wingu.sdk.data.api.model.ChannelEvents
@@ -63,6 +64,10 @@ class MainActivity : AppCompatActivity() {
         when (item.itemId) {
             R.id.rescan_menu_item -> {
                 rescan()
+                return true
+            }
+            R.id.scan_qrcodes -> {
+                startActivity(Intent(this, QrCodeScannerActivity::class.java))
                 return true
             }
             else -> return super.onOptionsItemSelected(item)

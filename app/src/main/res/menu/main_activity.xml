@@ -3,4 +3,8 @@
   <item
     android:id="@+id/rescan_menu_item"
     android:title="@string/button_rescan"/>
+
+  <item
+    android:id="@+id/scan_qrcodes"
+    android:title="@string/qrcode_scanner"/>
 </menu>

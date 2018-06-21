@@ -64,4 +64,5 @@ dependencies {
     implementation "com.android.support:appcompat-v7:${supportLibsVersion}"
     implementation "com.github.Speicher210.wingu-android-sdk:sdk:${winguSdkVersion}"
     implementation "com.github.Speicher210.wingu-android-sdk:component-video:${winguSdkVersion}"
+    implementation "com.github.Speicher210.wingu-android-sdk:qrcodescanner:${winguSdkVersion}"
 }

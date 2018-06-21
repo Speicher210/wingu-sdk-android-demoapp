@@ -17,6 +17,8 @@ class App : Application() {
         WinguSDKBuilder.with(this, WINGU_API_KEY)
                 .ibeaconBackgroundScan(true)
                 .channelNotificationsConfig(Callable { this.getChannelNotificationsConfig() })
+                .nfc(true)
+                .eddystoneUrl(true)
                 //                .registerComponent(LocationWinguComponent.specMapView()) // TODO optional; needs google API key added to your AndroidManifest.xml
                 //                .registerComponent(VideoWinguComponent.spec(your_google_api_key)) // TODO optional
                 .build()
