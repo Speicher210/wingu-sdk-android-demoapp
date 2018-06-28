@@ -1,6 +1,6 @@
 buildscript {
     repositories {
-        maven { url "https://github.com/Speicher210/wingu-android-sdk/raw/master/releases" }
+        maven { url rootProject.ext.winguSdkUrl }
     }
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${rootProject.ext.kotlinVersion}"
@@ -18,10 +18,10 @@ apply plugin: 'kotlin-android'
 
 dependencyManagement {
     imports {
-        mavenBom("com.github.Speicher210.wingu-android-sdk:bom:${winguSdkVersion}") {
+        mavenBom("com.github.Speicher210.wingu-android-sdk:bom:${rootProject.ext.winguSdkVersion}") {
             bomProperties([
-                    'com.android.support.version': supportLibsVersion,
-                    'org.jetbrains.kotlin'       : kotlinVersion
+                    'com.android.support.version': rootProject.ext.supportLibsVersion,
+                    'org.jetbrains.kotlin'       : rootProject.ext.kotlinVersion
             ])
         }
     }
@@ -57,7 +57,7 @@ repositories {
     jcenter()
     google()
     maven { url "https://jitpack.io" }
-    maven { url "https://github.com/Speicher210/wingu-android-sdk/raw/master/releases" }
+    maven { url rootProject.ext.winguSdkUrl }
 }
 
 dependencies {

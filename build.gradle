@@ -18,7 +18,8 @@ task clean(type: Delete) {
 }
 
 ext {
-    supportLibsVersion = '27.1.1'
-    winguSdkVersion = '3.1.0'
     kotlinVersion = '1.2.41'
+    supportLibsVersion = '27.1.1'
+    winguSdkVersion = '3.2.0'
+    winguSdkUrl = "https://github.com/Speicher210/wingu-android-sdk/raw/master/releases"
 }
