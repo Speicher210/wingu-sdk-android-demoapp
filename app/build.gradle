@@ -1,6 +1,6 @@
 buildscript {
     repositories {
-        maven { url "https://github.com/Speicher210/wingu-android-sdk/raw/master/releases" }
+        maven { url rootProject.ext.winguSdkUrl }
     }
 }
 
@@ -10,16 +10,11 @@ plugins {
 
 apply plugin: 'com.android.application'
 
-ext {
-    supportLibsVersion = '27.1.1'
-    winguSdkVersion = '3.1.0'
-}
-
 dependencyManagement {
     imports {
-        mavenBom("com.github.Speicher210.wingu-android-sdk:bom:${winguSdkVersion}") {
+        mavenBom("com.github.Speicher210.wingu-android-sdk:bom:${rootProject.ext.winguSdkVersion}") {
             bomProperties([
-                    'com.android.support.version': supportLibsVersion
+                    'com.android.support.version': rootProject.ext.supportLibsVersion
             ])
         }
     }
@@ -76,7 +71,7 @@ repositories {
     jcenter()
     google()
     maven { url "https://jitpack.io" }
-    maven { url "https://github.com/Speicher210/wingu-android-sdk/raw/master/releases" }
+    maven { url rootProject.ext.winguSdkUrl }
 }
 
 dependencies {
