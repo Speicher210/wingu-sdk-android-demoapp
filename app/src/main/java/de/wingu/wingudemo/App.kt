@@ -7,7 +7,6 @@ import de.wingu.sdk.WinguSDKBuilder
 import de.wingu.sdk.data.api.model.Channel
 import de.wingu.sdk.notification.ChannelNotificationsConfig
 import de.wingu.sdk.notification.WinguNotification
-import java.util.concurrent.Callable
 
 class App : Application() {
 
@@ -16,7 +15,7 @@ class App : Application() {
 
         WinguSDKBuilder.with(this, WINGU_API_KEY)
                 .ibeaconBackgroundScan(true)
-                .channelNotificationsConfig(Callable { this.getChannelNotificationsConfig() })
+                .channelNotificationsConfig(getChannelNotificationsConfig())
                 .nfc(true)
                 .eddystoneUrl(true)
                 //                .registerComponent(LocationWinguComponent.specMapView()) // TODO optional; needs google API key added to your AndroidManifest.xml
