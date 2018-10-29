@@ -6,7 +6,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.1.4'
+        classpath 'com.android.tools.build:gradle:3.2.1'
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -18,7 +18,7 @@ task clean(type: Delete) {
 }
 
 ext {
-    supportLibsVersion = '27.1.1'
+    supportLibsVersion = '28.0.0'
     winguSdkVersion = '3.5.0'
     winguSdkUrl = "https://github.com/Speicher210/wingu-android-sdk/raw/master/releases"
 }
