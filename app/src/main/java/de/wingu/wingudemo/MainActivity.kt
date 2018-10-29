@@ -43,11 +43,11 @@ class MainActivity : AppCompatActivity() {
         super.onStop()
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == WINGU_SDK_PREREQUISITES_REQUEST) {
+        if (data != null && requestCode == WINGU_SDK_PREREQUISITES_REQUEST) {
             val results = PrerequisitesChecker.getResolveResults(data)
-            if (results != null && results.failed.size == 0) {
+            if (results != null && results.failed.isEmpty()) {
                 listenForNearbyChannels()
             } else {
                 Log.e(TAG, "Could not get ResolveResults or some failed")
@@ -61,16 +61,16 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
+        return when (item.itemId) {
             R.id.rescan_menu_item -> {
                 rescan()
-                return true
+                true
             }
             R.id.scan_qrcodes -> {
                 startActivity(Intent(this, QrCodeScannerActivity::class.java))
-                return true
+                true
             }
-            else -> return super.onOptionsItemSelected(item)
+            else -> super.onOptionsItemSelected(item)
         }
     }
 
@@ -117,8 +117,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     companion object {
-
-        private val TAG = "MainActivity"
-        private val WINGU_SDK_PREREQUISITES_REQUEST = 535
+        private const val TAG = "MainActivity"
+        private const val WINGU_SDK_PREREQUISITES_REQUEST = 535
     }
 }
